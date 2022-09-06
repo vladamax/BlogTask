@@ -2,7 +2,7 @@
 defineProps({
     modelValue: String,
     name: String,
-    error: String
+    error: String,
 })
 
 defineEmits(['update:modelValue'])

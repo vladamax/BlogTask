@@ -12,7 +12,7 @@ class CreatedPostController extends Controller
     public function index()
     {
         return Inertia::render('Welcome', [
-            'posts' => CreatedPost::latest()->with(['author'])->where('author_id' , auth()->id())->get()
+            'posts' => CreatedPost::latest()->with(['author'])->where('author_id', auth()->id())->get()
         ]);
     }
 
@@ -21,11 +21,18 @@ class CreatedPostController extends Controller
         $attributes = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'text' => 'required'
-            // 'image' => 'mimes:jpeg,bmp,png'
+            'text' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
         ]);
 
         $attributes['author_id'] = auth()->id();
+
+        if (request()->file()) {
+            $image = request()->file('image');
+            $image_name = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('/images'), $image_name);
+            $attributes['image'] = '/images/' . $image_name;
+        }
 
         CreatedPost::create($attributes);
 
@@ -35,14 +42,13 @@ class CreatedPostController extends Controller
     public function show(CreatedPost $createdPost)
     {
         return Inertia::render('Posts/PostShow', [
-            'post' => $createdPost::with('Author')->where('id' , $createdPost->id)->get()
+            'post' => $createdPost::with('Author')->where('id', $createdPost->id)->get()
         ]);
     }
 
     public function edit(CreatedPost $createdPost)
     {
-        if($createdPost->author_id === auth()->id())
-        {
+        if ($createdPost->author_id === auth()->id()) {
             return Inertia::render('Posts/PostEdit', [
                 'post' => $createdPost
             ]);
@@ -51,7 +57,7 @@ class CreatedPostController extends Controller
         return Redirect::route('myUnpublishedPosts');
     }
 
-    public function update(CreatedPost $createdPost , Request $request)
+    public function update(CreatedPost $createdPost, Request $request)
     {
 
         $attributes = $request->validate([

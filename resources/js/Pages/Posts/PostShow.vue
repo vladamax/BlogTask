@@ -45,7 +45,6 @@ function publish() {
         <template #header>
 
             <TopPage/>
-
             <PostInfo :post="post[0]"/>
 
             <button v-if="route().current('unpublishedPostsShow')" class="mt-4 px-6 bg-red-400" @click="publish()">

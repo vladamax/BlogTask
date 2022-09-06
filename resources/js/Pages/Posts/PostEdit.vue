@@ -1,7 +1,7 @@
 <script setup>
 
 import {Head, useForm} from '@inertiajs/inertia-vue3'
-import DivPostForm from '@/Pages/Posts/DivPostForm.vue'
+import DivPostForm from '@/Components/DivPostForm.vue'
 import TopPage from '@/Components/TopPage.vue'
 import BreezeAuthenticatedLayout from '@/Layouts/Authenticated.vue'
 
@@ -13,6 +13,7 @@ let form = useForm({
     title: props.post.title,
     description: props.post.description,
     text: props.post.text,
+    image: props.post.image
 });
 
 const submit = () => {
@@ -38,6 +39,11 @@ const submit = () => {
                 <DivPostForm v-model="form.title" name="Title" :error="form.title.error"/>
                 <DivPostForm v-model="form.description" name="Description" :error="form.description.error"/>
                 <DivPostForm v-model="form.text" name="Text" :error="form.text.error"/>
+
+                <div v-if="post['image']">
+                    <b>Image: </b><br>
+                    <img :src="post['image']" class="object-scale-down h-auto w-auto">
+                </div>
 
                 <div class="mt-4 ">
                     <button class="ml-4 bg-red-300" :class="{ 'opacity-25': form.processing }"

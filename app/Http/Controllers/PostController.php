@@ -48,14 +48,19 @@ class PostController extends Controller
         $attributes = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'text' => 'required'
-            // 'image' => 'mimes:jpeg,bmp,png'
+            'text' => 'required',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
         ]);
-
         $attributes['author_id'] = auth()->id();
 
+        if (request()->file()) {
+            $image = request()->file('image');
+            $image_name = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('/images'), $image_name);
+            $attributes['image'] = '/images/' . $image_name;
+        }
+        
         Post::create($attributes);
-
 
         if (str_starts_with(substr(url()->previous(), 21), '/unpublishedPosts/'))
             return redirect('/unpublishedPostsDelete/' . substr(url()->previous(), 39));
