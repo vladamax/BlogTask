@@ -3,6 +3,7 @@ Blog Post aplikacija
 Potrebno je napraviti klasicnu Blog Post aplikaciju. Aplikacija treba da se sastoji od sledecih stvari:
 
 -Landing page
+
     Pocetna stranica aplikacije gde ce se videti lista objavljnih post-ova poredjanih od najnovijeg ka najstarijem. Za svaki post prikazati naslov, opis, sliku(ako ima), datum objave, ime autora i broj komentara.
     
 -Post page
