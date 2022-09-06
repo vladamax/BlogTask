@@ -13,10 +13,7 @@ defineEmits(['update:modelValue'])
         <label>{{ name }}</label>
         <input :value="modelValue" type="text"
                class="mt-1 block w-100 rounded"
-           @input="$emit('update:modelValue', $event.target.value)" required autofocus>
-        <label class="mt-2" :message="error" />
+               @input="$emit('update:modelValue', $event.target.value)" required autofocus>
+        <label class="mt-2" :message="error"/>
     </div>
 </template>
-
-<!--@click="$emit('update:currentTag', 'kurac')"-->
-    <!--@click="$emit('update:currentTag', 'kurac')"-->

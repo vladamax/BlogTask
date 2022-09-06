@@ -10,23 +10,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
 use Inertia\Inertia;
-use PhpParser\Node\Expr\Cast\Object_;
-use stdClass;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $posts = '';
-        if(Route::currentRouteName() === 'home')
-        {
-            $posts = Post::latest()->with(['author','comments'])->get();
-        }
-        else
-        {
-            $posts = Post::latest()->with(['author','comments'])->where('author_id' , auth()->id())->get();
+        if (Route::currentRouteName() === 'home') {
+            $posts = Post::latest()->with(['author', 'comments'])->get();
+        } else {
+            $posts = Post::latest()->with(['author', 'comments'])->where('author_id', auth()->id())->get();
         }
         return Inertia::render('Welcome', [
             'posts' => $posts
@@ -37,8 +30,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         return Inertia::render('Posts/PostShow', [
-            'post' => $post::with('Author')->where('id' , $post->id)->get(),
-            'comments' => Comment::latest()->with('Author')->where('post_id' , $post->id)->get(),
+            'post' => $post::with('Author')->where('id', $post->id)->get(),
+            'comments' => Comment::latest()->with('Author')->where('post_id', $post->id)->get(),
             'can' => [
                 'comment' => Auth::check()
             ]
@@ -56,7 +49,7 @@ class PostController extends Controller
             'title' => 'required',
             'description' => 'required',
             'text' => 'required'
-           // 'image' => 'mimes:jpeg,bmp,png'
+            // 'image' => 'mimes:jpeg,bmp,png'
         ]);
 
         $attributes['author_id'] = auth()->id();
@@ -64,16 +57,15 @@ class PostController extends Controller
         Post::create($attributes);
 
 
-        if(str_starts_with(substr(url()->previous() , 21) , '/unpublishedPosts/'))
-        return redirect('/unpublishedPostsDelete/' . substr(url()->previous(),39));
+        if (str_starts_with(substr(url()->previous(), 21), '/unpublishedPosts/'))
+            return redirect('/unpublishedPostsDelete/' . substr(url()->previous(), 39));
 
         return redirect(route('myPosts'));
     }
 
     public function edit(Post $post)
     {
-        if($post->author_id === auth()->id())
-        {
+        if ($post->author_id === auth()->id()) {
             return Inertia::render('Posts/PostEdit', [
                 'post' => $post
             ]);
@@ -81,7 +73,7 @@ class PostController extends Controller
         return Redirect::route('myPosts');
     }
 
-    public function update(Post $post , Request $request)
+    public function update(Post $post, Request $request)
     {
         $attributes = $request->validate([
             'title' => 'required',
@@ -95,10 +87,10 @@ class PostController extends Controller
     }
 
     public function destroy(Post $post)
-    {        if($post->author_id === auth()->id())
     {
-        $post->delete();
-    }
+        if ($post->author_id === auth()->id()) {
+            $post->delete();
+        }
         return redirect()->back();
     }
 }
