@@ -1,64 +1,24 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Blog Post aplikacija
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Potrebno je napraviti klasicnu Blog Post aplikaciju. Aplikacija treba da se sastoji od sledecih stvari:
 
-## About Laravel
-
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+-Landing page
+    Pocetna stranica aplikacije gde ce se videti lista objavljnih post-ova poredjanih od najnovijeg ka najstarijem. Za svaki post prikazati naslov, opis, sliku(ako ima), datum objave, ime autora i broj komentara.
+-Post page
+    Stranica gde ce se prikazati post. Na ovoj stranici napraviti i sekciju za komentare. Komentare mogu da ostavljaju samo ulogovani korisnici.
+-Registracija
+    Napraviti formu za registraciju korisnika. Forma treba da sadrzi polja za: ime, email i password. Formi za registraciju mogu da pristupe samo korisnici koji nisu ulogovani.             
+-Login
+    Napraviti formu za login korisnika. Forma treba da sadrzi polja za email i password. Login formi mogu da pristupe samo korisnici koji nisu ulogovani.
+-Logout  
+    Kada je korisnik ulogovan treba da postoji dugme za logout.
+-Kreiranje Post-a
+    Napraviti formu za kreiranje post-a. Svaki ulogovani korisnik moze da kreira neogranicen broj post-ova. Forma treba da sadrzi polja za: naslov, opis, text(telo post-a, treba dati mogucnost za: bold, italic i underline) i dodavanje slike.
+-Izmena Post-a
+    Napraviti formu za izmenu post-a. Sadrzi ista polja kao i forma za kreiranje. Korisnik moze da izmeni samo svoj post.  
+-Pregled postova
+    Napraviti stranicu gde ce korisnik videti listu svojih post-ova.
+-Brisanje postova
+    Korisnik moze da obrise samo svoj post.
+-Objavljivanje postova  
+    Kada korisnik kreira post on nije automatski objavljen (nece se videti na landing page-u). Treba napraviti dugme preko koga ce korisnik moci da objavi svoj post.
